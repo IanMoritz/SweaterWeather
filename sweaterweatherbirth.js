@@ -212,7 +212,7 @@ llConversion();
             }
         })   
     }
-};.listen(process.env.PORT || 5000)
+};
 
 function sendError(){  
     newTweet = "There was an error! Don't unfollow me!"
