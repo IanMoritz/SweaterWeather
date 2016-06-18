@@ -24,7 +24,7 @@ var T = new Twit({
     consumer_secret: 'zSP1UhufDM7hqDLJXHkImcRxB95gz8JOr38d5JeTAeMcp1yAO5',
     access_token: '728397151160668160-jTKxakMfi31tLLJt2SaAahmwCpjPmbG',
     access_token_secret: 'IwXYe2eHeeW3h1MLHVeLugodo0kTbA4Bh86DjaMmSvV6G',
-    timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests. 
+    timeout_ms: 60 * 60 * 1000, // optional HTTP request timeout to apply to all requests. 
 })
 
 //var stream = T.stream('user');
@@ -212,7 +212,7 @@ llConversion();
             }
         })   
     }
-};
+};.listen(process.env.PORT || 5000)
 
 function sendError(){  
     newTweet = "There was an error! Don't unfollow me!"
