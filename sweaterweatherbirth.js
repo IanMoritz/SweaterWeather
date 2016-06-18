@@ -136,7 +136,7 @@ var city = [
 "Birmingham, Alabama",]
 
 var locToLL = city[Math.floor(Math.random() * city.length)]
-console.log(locToLL);
+// console.log(locToLL);
 llConversion();
 
     function llConversion (){ 
@@ -150,9 +150,9 @@ llConversion();
         // fs.writeFile("geocoder.JSON", json);  //write JSON 3/3
         var lat = data.results[0].geometry.location.lat; 
         var long = data.results[0].geometry.location.lng;
-        console.log('Converted to location:');
-        console.log(lat + ', ' + long);
-        console.log(); 
+        // console.log('Converted to location:');
+        // console.log(lat + ', ' + long);
+        // console.log(); 
         fCast();
 
             function fCast(){
@@ -177,28 +177,28 @@ llConversion();
                 weatherLong = result.longitude,
                 status = dailyIcon.replace(/-/g, " ");
 
-                console.log('WEATHER REPORT:'); 
-                console.log("Current temp:");
-                console.log(currentTemp);
-                console.log(); 
-                console.log("Current summary:");
-                console.log(currentSummary);
-                console.log(); 
-                console.log("Daily summary:");
-                console.log(dailySummary);
-                console.log(); 
-                console.log("Weekly summary:");
-                console.log(weeklySummary);
-                console.log(); 
-                console.log("Daily min temp:");
-                console.log(dailyTempMin);
-                console.log(); 
-                console.log("Daily max temp:");
-                console.log(dailyTempMax);
-                console.log(); 
-                console.log("Daily icon:");
-                console.log(dailyIcon);
-                console.log();
+                // console.log('WEATHER REPORT:'); 
+                // console.log("Current temp:");
+                // console.log(currentTemp);
+                // console.log(); 
+                // console.log("Current summary:");
+                // console.log(currentSummary);
+                // console.log(); 
+                // console.log("Daily summary:");
+                // console.log(dailySummary);
+                // console.log(); 
+                // console.log("Weekly summary:");
+                // console.log(weeklySummary);
+                // console.log(); 
+                // console.log("Daily min temp:");
+                // console.log(dailyTempMin);
+                // console.log(); 
+                // console.log("Daily max temp:");
+                // console.log(dailyTempMax);
+                // console.log(); 
+                // console.log("Daily icon:");
+                // console.log(dailyIcon);
+                // console.log();
 
 
 
