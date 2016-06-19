@@ -202,18 +202,14 @@ llConversion();
                 tneckConversion();
 
                     function tneckConversion (){
-                        if (currentTemp < 0) {
-                            var tnecks = 'The weather is calling for all the sweaters you have';
-                            console.log(tnecks);
-                        }
 
                         if (currentTemp >= 0 && currentTemp < 10) {
-                            var tnecks = 'The weather is calling for maximum sweaters ';
+                            var tnecks = 'The weather is calling for all the sweaters you have. ';
                             console.log(tnecks);
                         }
 
                         if (currentTemp >= 10 && currentTemp < 20) {
-                            var tnecks = 'The weather is calling for maximum sweaters and a cup of hot choclate.';
+                            var tnecks = 'The weather is calling for maximum sweaters and a cup of hot choclate. ';
                             console.log(tnecks);
                         }
 
@@ -248,7 +244,7 @@ llConversion();
                         }
 
                         if (currentTemp>= 80 && currentTemp < 90) {
-                            var tnecks = "It's a hot one. No sweaters today. Break out the linen or searsuckers. ";
+                            var tnecks = "It's a hot one. No sweaters today. Break out the linen, jorts, and searsuckers. ";
                             console.log(tnecks);
                         }
 
@@ -260,6 +256,9 @@ llConversion();
                         if (currentTemp>= 100) {
                             var tnecks = 'The weather is calling for a bathing suit and air conditioning. ';
                             console.log(tnecks);
+                        }
+                        else {
+                            var tnecks = 'Wear a hazmat suit. ':
                         }
 
                         if (currentSummary === "rain") {
@@ -274,7 +273,7 @@ llConversion();
 
                         var r = Math.floor(Math.random() * 100);
 
-                        var newtweet = tnecks + extra + "It is " + currentTemp + " in " + locToLL + "."
+                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". " "http://forecast.io/#/f/" + lat + "," + long
                         sendIt(newtweet);
 
                     }
