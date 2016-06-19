@@ -257,9 +257,6 @@ llConversion();
                             var tnecks = 'The weather is calling for a bathing suit and air conditioning. ';
                             console.log(tnecks);
                         }
-                        else {
-                            var tnecks = 'Wear a hazmat suit. ':
-                        }
 
                         if (currentSummary === "rain") {
                             var extra = "Add a rain jacket! ";
@@ -273,7 +270,7 @@ llConversion();
 
                         var r = Math.floor(Math.random() * 100);
 
-                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". " "http://forecast.io/#/f/" + lat + "," + long
+                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". http://forecast.io/#/f/" + lat + "," + long
                         sendIt(newtweet);
 
                     }
