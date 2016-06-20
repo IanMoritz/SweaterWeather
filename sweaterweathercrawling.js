@@ -309,12 +309,3 @@ function sendIt(txt) {
         }
 //  }
 }
-
-
-//TO-DO
-//Auto follow and unfollow
-//Incorporate snow and rain
-//Cycle random cities
-//Other responses and greetings
-//NPM forever deploymnet
-//error handling
