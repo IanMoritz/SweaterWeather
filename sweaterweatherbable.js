@@ -142,7 +142,7 @@ llConversion();
     function llConversion (){ 
         geocoder.geocode(locToLL, function ( err, data ) {  //geocoder module saving the day
             if (err) {
-                console.log (error)
+                console.log (err)
                 sendError(); 
             }
         // var fs = require ('fs');  //write JSON 1/3
@@ -158,7 +158,7 @@ llConversion();
             function fCast(){
                 forecast.get([lat, long], true, function( err, result ) {
                     if (err) {
-                        console.log (error)
+                        console.log(err)
                         sendError(); 
                     }
                 // var fs = require ('fs');  //write JSON 1/3
@@ -204,62 +204,50 @@ llConversion();
                     function tneckConversion (){
                         if (currentTemp < 0) {
                             var tnecks = 'The weather is calling for all the sweaters you have';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 0 && currentTemp < 10) {
                             var tnecks = 'The weather is calling for maximum sweaters ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 10 && currentTemp < 20) {
                             var tnecks = 'The weather is calling for maximum sweaters and a cup of hot choclate.';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 20 && currentTemp < 30) {
                             var tnecks = 'Brrrrr! Bundle up with a wool turtleneck. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 30 && currentTemp < 40) {
                             var tnecks = 'The weather is calling for two thick turtleneck. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 40 && currentTemp < 50) {
                             var tnecks = 'One nice sweatershirt should do the trick! ';
-                            console.log(tnecks);
                         }
 
-                        if (currentTemp>= 50 && currentTemp < 60) {
+                        if (currentTemp >= 50 && currentTemp < 60) {
                             var tnecks = 'The weather is calling for one light sweater today. ';
-                            console.log(tnecks);
                         }
 
-                        if (currentTemp>= 60 && currentTemp < 70) {
-                            var tnecks = 'The weather is calling longsleeves. ';
-                            console.log(tnecks);
-                        }
+                        if (currentTemp >= 60 && currentTemp < 70) {
+                            var tnecks = 'The weather is calling for longsleeves. ';
+                        }                        
 
-                        if (currentTemp>= 70 && currentTemp < 80) {
+                        if (currentTemp >= 70 && currentTemp < 80) {
                             var tnecks = "It is a little warm for a sweater. It's shortleeves and shorts weather. ";
-                            console.log(tnecks);
                         }
 
-                        if (currentTemp>= 80 && currentTemp < 90) {
+                        if (currentTemp >= 80 && currentTemp < 90) {
                             var tnecks = "It's a hot one. No sweaters today. Break out the linen, jorts, and searsucker. ";
-                            console.log(tnecks);
                         }
 
-                        if (currentTemp>= 90 && currentTemp < 100) {
+                        if (currentTemp >= 90 && currentTemp < 100) {
                             var tnecks = 'No sweaters today. Grab your sunscreen and shortsleeves!  ';
-                            console.log(tnecks);
                         }
 
-                        if (currentTemp>= 100) {
+                        if (currentTemp >= 100) {
                             var tnecks = 'The weather is calling for a bathing suit and air conditioning. ';
-                            console.log(tnecks);
                         }
 
                         if (currentSummary === "rain") {
@@ -272,11 +260,23 @@ llConversion();
                             var extra = "";
                         }
 
+                        var subWeatherLat = weatherLat.toFixed(4);
+                        var subWeatherLong = weatherLong.toFixed(4);
+
                         var r = Math.floor(Math.random() * 100);
 
-                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". http://forecast.io/#/f/" + lat + "," + long;
-                        sendIt(newtweet);
+                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". http://forecast.io/#/f/" + subWeatherLat + "," + subWeatherLong;
+                        console.log(newtweet);
 
+                        function lengthCheck (){
+                            if (newtweet.length >= 140) { //shortened version
+                                var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL 
+                                lengthCheck();
+                            }
+                            else if (newtweet.length <= 140) { 
+                                sendIt(newtweet);
+                            }
+                        }
                     }
                 })
             }
@@ -285,8 +285,8 @@ llConversion();
 };
 
 function sendError(){  
-    newTweet = "There was an error! Don't unfollow me!"
-    sendIt(newTweet);  
+    errorTweet = "There was an error! Don't unfollow me!"
+    sendIt(errorTweet);  
 }
 
 function sendIt(txt) {
@@ -305,6 +305,7 @@ function sendIt(txt) {
         function tweeted(err, data, response) {
             if (err) {
                 console.log("Error posting");
+                console.log(err);
             } else {
                 console.log("It worked!");
                 console.log();
@@ -313,3 +314,5 @@ function sendIt(txt) {
         }
 //  }
 }
+
+//add more responses 
