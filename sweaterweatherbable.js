@@ -266,16 +266,15 @@ llConversion();
                         var r = Math.floor(Math.random() * 100);
 
                         var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". http://forecast.io/#/f/" + subWeatherLat + "," + subWeatherLong;
-                        console.log(newtweet);
 
-                        function lengthCheck (){
-                            if (newtweet.length >= 140) { //shortened version
-                                var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL 
-                                lengthCheck();
-                            }
-                            else if (newtweet.length <= 140) { 
-                                sendIt(newtweet);
-                            }
+                        if (newtweet.length >= 140) { //shortened version
+                            var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL 
+                            console.log(newtweet.length);
+                            sendIt(newtweet);
+                        }
+
+                        else if (newtweet.length <= 140) { 
+                            sendIt(newtweet);
                         }
                     }
                 })
