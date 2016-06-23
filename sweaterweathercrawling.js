@@ -4,31 +4,10 @@ console.log('The bot is starting');
 var Forecast = require('forecast');
 var Twit = require('twit');
 var geocoder = require('geocoder');
-
-//Initialize APIs:
-//Forecast API
-var forecast = new Forecast({
-    service: 'forecast.io',
-    key: '55126e7085ee164957d8e51eff9fa606',
-    units: 'f', // Only the first letter is parsed 
-    cache: false, // Cache API requests? 
-    ttl: { // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/ 
-        minutes: 59,
-        seconds: 0
-    }
-});
-
-//Twitter API
-var T = new Twit({
-    consumer_key: 'dx4ShG5omRipVLofSBNTlyGaU',
-    consumer_secret: 'zSP1UhufDM7hqDLJXHkImcRxB95gz8JOr38d5JeTAeMcp1yAO5',
-    access_token: '728397151160668160-jTKxakMfi31tLLJt2SaAahmwCpjPmbG',
-    access_token_secret: 'IwXYe2eHeeW3h1MLHVeLugodo0kTbA4Bh86DjaMmSvV6G',
-    timeout_ms: 60 * 60 * 1000, // optional HTTP request timeout to apply to all requests. 
-})
-
-//var stream = T.stream('user');
-//stream.on('tweet',tweetEvent);
+var twitconfig = require('./config/twitconfig');
+var forecastconfig = require('./config/forecastconfig')
+var forecast = new Forecast(forecastconfig);
+var T = new Twit(twitconfig);
 
 tweetIt();
 setInterval(tweetIt, 1000*60*60*3);
@@ -136,7 +115,6 @@ var city = [
 "Birmingham, Alabama",]
 
 var locToLL = city[Math.floor(Math.random() * city.length)]
-// console.log(locToLL);
 llConversion();
 
     function llConversion (){ 
@@ -205,57 +183,46 @@ llConversion();
 
                         if (currentTemp >= 0 && currentTemp < 10) {
                             var tnecks = 'The weather is calling for all the sweaters you have. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 10 && currentTemp < 20) {
                             var tnecks = 'The weather is calling for maximum sweaters and a cup of hot choclate. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 20 && currentTemp < 30) {
                             var tnecks = 'Brrrrr! Bundle up with a wool turtleneck. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 30 && currentTemp < 40) {
                             var tnecks = 'The weather is calling for two thick turtleneck. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp >= 40 && currentTemp < 50) {
                             var tnecks = 'One nice sweatershirt should do the trick! ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 50 && currentTemp < 60) {
                             var tnecks = 'The weather is calling for one light sweater today. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 60 && currentTemp < 70) {
                             var tnecks = 'The weather is calling longsleeves. ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 70 && currentTemp < 80) {
                             var tnecks = "It is a little warm for a sweater. It's shortleeves and shorts weather. " ;
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 80 && currentTemp < 90) {
                             var tnecks = "It's a hot one. No sweaters today. Break out the linen, jorts, and searsuckers. ";
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 90 && currentTemp < 100) {
                             var tnecks = 'No sweaters today. Grab your sunscreen and shortsleeves!  ';
-                            console.log(tnecks);
                         }
 
                         if (currentTemp>= 100) {
                             var tnecks = 'The weather is calling for a bathing suit and air conditioning. ';
-                            console.log(tnecks);
                         }
 
                         if (currentSummary === "rain") {
@@ -270,7 +237,7 @@ llConversion();
 
                         var r = Math.floor(Math.random() * 100);
 
-                        var newtweet = tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL + ". http://forecast.io/#/f/" + lat + "," + long
+                        var newtweet =  tnecks + extra + "It is " + currentTemp + " degrees and " + currentSummary + " in " + locToLL
                         sendIt(newtweet);
 
                     }
@@ -286,26 +253,19 @@ function sendError(){
 }
 
 function sendIt(txt) {
-    // console.log(from);
-    // if (from === null || from === "Sweaters_Today") {
-    //     //console.log("I made it here 1");
-    //     exit();
-    // }
-    // else {
     var tweet = {
         status: (txt)
     }
 
-    T.post('statuses/update', tweet, tweeted);
+T.post('statuses/update', tweet, tweeted);
 
-        function tweeted(err, data, response) {
-            if (err) {
-                console.log("Something went wrong!");
-            } else {
-                console.log("It worked!");
-                console.log();
-                console.log(txt);
-            }
+    function tweeted(err, data, response) {
+        if (err) {
+            console.log("Something went wrong!");
+         } else {
+            console.log("It worked!");
+            console.log();
+            console.log(txt);
         }
-//  }
+    }
 }
