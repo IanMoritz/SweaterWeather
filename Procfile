@@ -1,1 +1,1 @@
-worker: node sweaterweatherbable.js
+worker: node sweaterweathercrawling.js
