@@ -117,7 +117,7 @@ var city = [
 var locToLL = city[Math.floor(Math.random() * city.length)]
 llConversion();
 
-        function llConversion (){ 
+                function llConversion (){ 
             geocoder.geocode(locToLL, function ( err, data ) {  //geocoder module saving the day
                 if (err) {
                     console.log("llConversion error:");
@@ -195,8 +195,8 @@ llConversion();
 
                             if (currentTemp >= 10 && currentTemp < 30) {
                                 options = [
-                                'The weather is calling for maximum sweaters and a cup of hot choclate. ',
-                                "4 sweaters... or just wear a winter jacket. ",
+                                'The weather is calling for maximum sweaters and a cup of hot choclate. '
+                                '4 sweaters...or just wear a winter jacket. '
                                 'Brrrrr! Bundle up with a wool turtleneck. ',
                                 "You're going to need a hat and gloves too. "
                                 ]
@@ -239,7 +239,7 @@ llConversion();
                             if (currentTemp >= 70 && currentTemp < 80) {
                                 options = [
                                 "It is too warm for a sweater. Go with shortsleeves instead. ",
-                                "Negative 2 sweaters. ",
+                                "Negative 2 sweaters. "
                                 "Shorts and shortsleeves today. "
                                 ]
                                 tnecks = options[Math.floor(Math.random() * options.length)]
@@ -250,7 +250,7 @@ llConversion();
                                 "It's a hot one. No sweaters today. Break out the linen, jorts, and searsucker. ",
                                 "Negative 3 sweaters. ",
                                 "Suns out, guns out. ",
-                                "Tank top today. ",
+                                "Tank top today. "
                                 "Wear as little as possible. "
                                 ]
                                 tnecks = options[Math.floor(Math.random() * options.length)]
@@ -268,7 +268,7 @@ llConversion();
                             if (currentTemp >= 100) {
                                 options = [
                                 'The weather is calling for a bathing suit and A LOT of air conditioning. ',
-                                "Forget the sweaters, AC should be your best friend today. ",
+                                "Forget the sweaters, AC should be your best friend today. "
                                 "Knit yourself a sweater out of sunscreen. "
                                 ]
                                 tnecks = options[Math.floor(Math.random() * options.length)]                                
@@ -347,14 +347,12 @@ llConversion();
                                         }
                                     }
                                 }
-                            })  //geocode
-                        }  //tneck
-                    })  //forecast
-                }  //fcast
-            })  //geocode
-        }  //llconversion
-    };
-
+                            })
+                        }
+                    })
+                }
+            })
+};
 
 function sendError(){  
     newTweet = "There was an error! Don't unfollow me!"
