@@ -287,25 +287,6 @@ llConversion();
                             var subWeatherLat = weatherLat.toFixed(4);
                             var subWeatherLong = weatherLong.toFixed(4);
 
-                                geocoder.reverseGeocode(subWeatherLat, subWeatherLong, function ( err, data ) {
-
-                                    if (err) {
-                                        console.log("lnameLocation error:");
-                                        console.log (err)
-                                        sendError(); 
-                                    }
-
-                                // var fs = require ('fs');  //write JSON 1/3
-                                // var json = JSON.stringify(data,null,2);  //write JSON 2/3
-                                // fs.writeFile("reversegeocoder.JSON", json);  //write JSON 3/3
-
-                                // nameLocation1 = data.results[0].address_components[1].short_name,
-                                nameLocation1 = data.results[0].formatted_address,
-                                nameLocation2 = nameLocation1.split(', ')
-                                nameLocation3 = nameLocation2[1] + ", " + nameLocation2[2].substring(0, 2)
-                                console.log(nameLocation3)
-                                console.log()
-
                                 composeTweet();
 
                                 function composeTweet (){
