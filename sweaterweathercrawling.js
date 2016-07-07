@@ -10,7 +10,7 @@ var forecast = new Forecast(forecastconfig);
 var T = new Twit(twitconfig);
 
 tweetIt();
-setInterval(tweetIt, 1000*60*60*3);
+setInterval(tweetIt, 1000*60*60*4);
 
 function tweetIt(eventMsg){
 
